@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>About - BIBlog</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <!-- Google AdSense -->
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left target">
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="https://x.com/Biblog_offical" target="_blank" style="color:inherit;"><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href="https://www.instagram.com/biblog_offical/" target="_blank" style="color:inherit;"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UC-GrT1yyu8FoyWQAyZSj_xQ" target="_blank" style="color:inherit;"><i class="fa-brands fa-square-youtube"></i></a>
+            </div>
+            <div class="center">
+                <a href="../index.html" data-i18n="home">HOME</a>
+                <a href="about.html" data-i18n="about">ABOUT</a>
+                <a href="register.html" id="regBtn" data-i18n="register">REGISTER</a>
+                <a href="login.html" id="loginBtn" data-i18n="login">LOGIN</a>
+                <a href="add.html" id="addBtn" data-i18n="add" style="display:none;">ADD</a>
+                <a href="#" id="logoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;" data-i18n="logout">LOGOUT</a>
+            </div>
+            <div class="right">
+                <button class="dark-mode-btn" id="darkModeBtn" title="Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <div class="searchEngine" id="searchEngine">
+                    <input type="text" id="searchInput" data-i18n-placeholder="search" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hamburger Menü -->
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="../public/img/user/user-1.jpg" alt="profil">
+            <div>
+                <p id="menuUserName">Guest</p>
+                <span id="menuUserEmail"></span>
+            </div>
+        </div>
+        <nav>
+            <a href="../index.html"><i class="fa-solid fa-house"></i> <span data-i18n="menuHome">Home</span></a>
+            <a href="profile.html" id="menuProfileLink" style="display:none;"><i class="fa-solid fa-user"></i> <span data-i18n="menuProfile">My Profile</span></a>
+            <a href="explore.html"><i class="fa-solid fa-compass"></i> <span data-i18n="menuExplore">Explore</span></a>
+            <a href="notifications.html"><i class="fa-solid fa-bell"></i> <span data-i18n="menuNotif">Notifications</span></a>
+            <a href="messages.html"><i class="fa-solid fa-comments"></i> <span data-i18n="menuMessages">Messages</span></a>
+            <a href="public.html"><i class="fa-solid fa-globe"></i> <span data-i18n="menuPublic">Public Blogs</span></a>
+            <a href="about.html"><i class="fa-solid fa-circle-info"></i> <span data-i18n="menuAbout">About</span></a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="menuSettings">Settings</span></a>
+            <a href="register.html" id="menuRegBtn"><i class="fa-solid fa-user-plus"></i> <span data-i18n="menuRegister">Register</span></a>
+            <a href="login.html" id="menuLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="menuLogin">Log In</span></a>
+            <a href="./admin.html" id="adminLink" style="display:none; color:#f59e0b;"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="menuLogout">Log Out</span></a>
+        </nav>
+        <div class="side-menu-footer"><small data-i18n="copyright">BIBlog © 2025</small></div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <header class="header target">
+        <img src="../public/img/background/About.png" alt="background">
+        <h1 data-i18n="aboutHeader">Why U.S.</h1>
+        <h3 data-i18n="aboutSubtitle">We Are a Family</h3>
+    </header>
+
+    <div class="about">
+        <div class="wrapper target">
+            <div class="text">
+                <h1 data-i18n="aboutWhoTitle">Who Are We</h1>
+                <p data-i18n="aboutWhoText">We are a dedicated team of explorers and researchers driven by the ultimate mystery of the cosmos. Our mission is to bridge the gap between humanity and the unknown, analyzing declassified archives and celestial phenomena to uncover the truth about extraterrestrial life.</p>
+            </div>
+            <div class="photo"><img src="../public/img/team/team-1.png" alt=""></div>
+        </div>
+        <div class="wrapper target">
+            <div class="text">
+                <h1 data-i18n="aboutTeamTitle">Our Team</h1>
+                <p data-i18n="aboutTeamText">We are a diverse collective of seasoned experts, ranging from data analysts to field investigators, all united by a single passion: uncovering the cosmic truth.</p>
+            </div>
+            <div class="photo"><img src="../public/img/team/team-2.png" alt=""></div>
+        </div>
+        <div class="wrapper target">
+            <div class="text">
+                <h1 data-i18n="aboutWhyTitle">Why U.S.</h1>
+                <p data-i18n="aboutWhyText">Our unwavering dedication to unparalleled accuracy and scientific transparency.</p>
+            </div>
+            <div class="photo"><img src="../public/img/team/team-3.png" alt=""></div>
+        </div>
+    </div>
+
+    <script src="../public/js/dark-mode.js"></script>
+    <script src="../public/js/search.js"></script>
+    <script src="../public/js/scroll.js"></script>
+    <script src="../public/js/menu.js"></script>
+    <script type="module" src="../public/js/firebase.js"></script>
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script src="../public/js/language.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>

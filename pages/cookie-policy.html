@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Cookie Policy - BIBlog</title>
+    <style>
+        .legal-page { max-width: 800px; margin: 40px auto; padding: 0 20px 80px; font-family: 'Josefin Sans', sans-serif; }
+        .legal-page h1 { font-size: 2rem; margin-bottom: 8px; }
+        .legal-page .last-updated { color: #888; font-size: 0.85rem; margin-bottom: 32px; }
+        .legal-page h2 { font-size: 1.2rem; margin: 28px 0 10px; color: #222; }
+        .legal-page p, .legal-page li { font-size: 0.95rem; line-height: 1.8; color: #444; }
+        .legal-page ul { padding-left: 20px; margin: 8px 0 16px; }
+        .legal-page a { color: #4f46e5; }
+        .cookie-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+        .cookie-table th { background: #f5f5f5; padding: 10px 14px; text-align: left; border: 1px solid #eee; }
+        .cookie-table td { padding: 10px 14px; border: 1px solid #eee; color: #444; }
+        body.dark-mode .legal-page h1, body.dark-mode .legal-page h2 { color: #e0e0e0; }
+        body.dark-mode .legal-page p, body.dark-mode .legal-page li { color: #b0b0b0; }
+        body.dark-mode .legal-page { background: transparent; }
+        body.dark-mode .legal-page .last-updated { color: #888; }
+        body.dark-mode .cookie-table th { background: #1a1a2e; color: #e0e0e0; border-color: #2a2a4a; }
+        body.dark-mode .cookie-table td { color: #b0b0b0; border-color: #2a2a4a; }
+    </style>
+    <!-- Google AdSense -->
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left"><button class="hamburger-btn" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button></div>
+            <div class="center"><a href="../index.html">BIBlog</a></div>
+            <div class="right"><button class="dark-mode-btn" id="darkModeBtn"><i class="fa-solid fa-moon"></i></button></div>
+        </div>
+    </div>
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="../public/img/user/user-1.jpg" alt="profile">
+            <div><p id="menuUserName">Guest</p><span id="menuUserEmail"></span></div>
+        </div>
+        <nav>
+            <a href="../index.html"><i class="fa-solid fa-house"></i> <span data-i18n="menuHome">Home</span></a>
+            <a href="profile.html" id="menuProfileLink" style="display:none;"><i class="fa-solid fa-user"></i> <span data-i18n="menuProfile">My Profile</span></a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="menuSettings">Settings</span></a>
+            <a href="privacy-policy.html"><i class="fa-solid fa-shield"></i> <span data-i18n="menuPrivacy">Privacy Policy</span></a>
+            <a href="terms.html"><i class="fa-solid fa-file-contract"></i> <span data-i18n="menuTerms">Terms of Service</span></a>
+            <a href="cookie-policy.html"><i class="fa-solid fa-cookie"></i> <span data-i18n="menuCookie">Cookie Policy</span></a>
+            <a href="register.html" id="menuRegBtn"><i class="fa-solid fa-user-plus"></i> <span data-i18n="menuRegister">Register</span></a>
+            <a href="login.html" id="menuLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="menuLogin">Log In</span></a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="menuLogout">Log Out</span></a>
+        </nav>
+        <div class="side-menu-footer"><small data-i18n="copyright">BIBlog © 2025</small></div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <div class="legal-page">
+        <h1><i class="fa-solid fa-cookie-bite" style="color:#f59e0b;margin-right:10px;"></i>Cookie Policy</h1>
+        <p class="last-updated">Last updated: January 1, 2025</p>
+
+        <p>This Cookie Policy explains how BIBlog uses cookies and similar tracking technologies when you visit our website.</p>
+
+        <h2>What Are Cookies?</h2>
+        <p>Cookies are small text files that are stored on your device when you visit a website. They are widely used to make websites work efficiently and to provide information to website owners.</p>
+
+        <h2>Types of Cookies We Use</h2>
+        <table class="cookie-table">
+            <tr><th>Cookie Type</th><th>Purpose</th><th>Duration</th></tr>
+            <tr><td><strong>Essential</strong></td><td>Required for login sessions and security</td><td>Session</td></tr>
+            <tr><td><strong>Preferences</strong></td><td>Remember your language and theme settings</td><td>1 year</td></tr>
+            <tr><td><strong>Analytics</strong></td><td>Google Analytics — understand usage patterns</td><td>2 years</td></tr>
+            <tr><td><strong>Advertising</strong></td><td>Google AdSense — show relevant ads</td><td>1-2 years</td></tr>
+        </table>
+
+        <h2>Google AdSense Cookies</h2>
+        <p>We use Google AdSense to display advertisements. Google uses cookies to serve ads based on your prior visits to our website and other websites. These are the main cookies used:</p>
+        <ul>
+            <li><strong>IDE</strong> — Used by Google DoubleClick to register and report user actions after viewing/clicking an ad.</li>
+            <li><strong>DSID</strong> — Used to identify a signed-in user in non-Google sites to remember their preferences.</li>
+            <li><strong>NID</strong> — Used to remember your preferences and other information.</li>
+        </ul>
+        <p>You can opt out of personalized advertising at <a href="https://www.google.com/settings/ads" target="_blank">google.com/settings/ads</a>.</p>
+
+        <h2>How to Control Cookies</h2>
+        <p>You can control cookies through your browser settings. However, disabling certain cookies may affect the functionality of our site.</p>
+        <ul>
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Chrome</a></li>
+            <li><a href="https://support.mozilla.org/en-US/kb/enable-and-disable-cookies-website-preferences" target="_blank">Firefox</a></li>
+            <li><a href="https://support.apple.com/en-us/HT201265" target="_blank">Safari</a></li>
+            <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge" target="_blank">Edge</a></li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>Questions about our cookie use? Contact us at <a href="mailto:privacy@biblog.com">privacy@biblog.com</a></p>
+    </div>
+
+    <script src="../public/js/dark-mode.js"></script>
+    <script src="../public/js/scroll.js"></script>
+    <script src="../public/js/menu.js"></script>
+    <script src="../public/js/language.js"></script>
+    <script type="module" src="../public/js/firebase.js"></script>
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>

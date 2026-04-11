@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Notifications - BIBlog</title>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left">
+                <button class="hamburger-btn" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <div class="center"><a href="../index.html">BIBlog</a></div>
+            <div class="right">
+                <button class="dark-mode-btn" id="darkModeBtn"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="../public/img/user/user-1.jpg" alt="profile">
+            <div><p id="menuUserName">Guest</p><span id="menuUserEmail"></span></div>
+        </div>
+        <nav>
+            <a href="../index.html"><i class="fa-solid fa-house"></i> <span data-i18n="menuHome">Home</span></a>
+            <a href="profile.html" id="menuProfileLink" style="display:none;"><i class="fa-solid fa-user"></i> <span data-i18n="menuProfile">My Profile</span></a>
+            <a href="explore.html"><i class="fa-solid fa-compass"></i> <span data-i18n="menuExplore">Explore</span></a>
+            <a href="messages.html"><i class="fa-solid fa-comments"></i> <span data-i18n="menuMessages">Messages</span></a>
+            <a href="notifications.html"><i class="fa-solid fa-bell"></i> <span data-i18n="menuNotif">Notifications</span></a>
+            <a href="public.html"><i class="fa-solid fa-globe"></i> <span data-i18n="menuPublic">Public Blogs</span></a>
+            <a href="about.html"><i class="fa-solid fa-circle-info"></i> <span data-i18n="menuAbout">About</span></a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="menuSettings">Settings</span></a>
+            <a href="register.html" id="menuRegBtn"><i class="fa-solid fa-user-plus"></i> <span data-i18n="menuRegister">Register</span></a>
+            <a href="login.html" id="menuLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="menuLogin">Log In</span></a>
+            <a href="admin.html" id="adminLink" style="display:none; color:#f59e0b;"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="signOut">Log Out</span></a>
+        </nav>
+        <div class="side-menu-footer"><small data-i18n="copyright">BIBlog © 2025</small></div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <div style="max-width:700px;margin:30px auto;padding:0 15px 80px;">
+        <h2 style="font-family:'Josefin Sans',sans-serif;font-size:1.4rem;display:flex;align-items:center;gap:10px;margin-bottom:24px;">
+            <i class="fa-solid fa-bell"></i> <span data-i18n="notifications">Notifications</span>
+        </h2>
+        <div id="notifContainer">
+            <p style="text-align:center;padding:60px 20px;color:#888;font-family:'Josefin Sans',sans-serif;">
+                <i class="fa-solid fa-bell-slash" style="font-size:2.5rem;display:block;margin-bottom:16px;opacity:0.3;"></i>
+                <span data-i18n="loadingNotif">Loading notifications...</span>
+            </p>
+        </div>
+    </div>
+
+    <script src="../public/js/dark-mode.js"></script>
+    <script src="../public/js/scroll.js"></script>
+    <script src="../public/js/menu.js"></script>
+    <script src="../public/js/language.js"></script>
+    <script type="module" src="../public/js/firebase.js"></script>
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script type="module" src="../public/js/notifications.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Privacy Policy - BIBlog</title>
+    <style>
+        .legal-page { max-width: 800px; margin: 40px auto; padding: 0 20px 80px; font-family: 'Josefin Sans', sans-serif; }
+        .legal-page h1 { font-size: 2rem; margin-bottom: 8px; }
+        .legal-page .last-updated { color: #888; font-size: 0.85rem; margin-bottom: 32px; }
+        .legal-page h2 { font-size: 1.2rem; margin: 28px 0 10px; color: #222; }
+        .legal-page p, .legal-page li { font-size: 0.95rem; line-height: 1.8; color: #444; }
+        .legal-page ul { padding-left: 20px; margin: 8px 0 16px; }
+        .legal-page a { color: #4f46e5; }
+        body.dark-mode .legal-page h1,
+        body.dark-mode .legal-page h2 { color: #e0e0e0; }
+        body.dark-mode .legal-page p,
+        body.dark-mode .legal-page li { color: #b0b0b0; }
+        body.dark-mode .legal-page { background: transparent; }
+        body.dark-mode .legal-page .last-updated { color: #888; }
+        body.dark-mode .legal-page ul li { color: #b0b0b0; }
+        body.dark-mode .legal-page ul li strong { color: #e0e0e0; }
+    </style>
+    <!-- Google AdSense -->
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left">
+                <button class="hamburger-btn" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <div class="center"><a href="../index.html">BIBlog</a></div>
+            <div class="right">
+                <button class="dark-mode-btn" id="darkModeBtn"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="../public/img/user/user-1.jpg" alt="profile">
+            <div><p id="menuUserName">Guest</p><span id="menuUserEmail"></span></div>
+        </div>
+        <nav>
+            <a href="../index.html"><i class="fa-solid fa-house"></i> <span data-i18n="menuHome">Home</span></a>
+            <a href="profile.html" id="menuProfileLink" style="display:none;"><i class="fa-solid fa-user"></i> <span data-i18n="menuProfile">My Profile</span></a>
+            <a href="public.html"><i class="fa-solid fa-globe"></i> <span data-i18n="menuPublic">Public Blogs</span></a>
+            <a href="about.html"><i class="fa-solid fa-circle-info"></i> <span data-i18n="menuAbout">About</span></a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="menuSettings">Settings</span></a>
+            <a href="privacy-policy.html"><i class="fa-solid fa-shield"></i> <span data-i18n="menuPrivacy">Privacy Policy</span></a>
+            <a href="cookie-policy.html"><i class="fa-solid fa-cookie"></i> <span data-i18n="menuCookie">Cookie Policy</span></a>
+            <a href="terms.html"><i class="fa-solid fa-file-contract"></i> <span data-i18n="menuTerms">Terms of Service</span></a>
+            <a href="register.html" id="menuRegBtn"><i class="fa-solid fa-user-plus"></i> <span data-i18n="menuRegister">Register</span></a>
+            <a href="login.html" id="menuLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="menuLogin">Log In</span></a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="menuLogout">Log Out</span></a>
+        </nav>
+        <div class="side-menu-footer"><small data-i18n="copyright">BIBlog © 2025</small></div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <div class="legal-page">
+        <h1><i class="fa-solid fa-shield-halved" style="color:#4f46e5;margin-right:10px;"></i>Privacy Policy</h1>
+        <p class="last-updated">Last updated: January 1, 2025</p>
+
+        <p>Welcome to <strong>BIBlog</strong> ("we", "our", or "us"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at <strong>biblog.com</strong> and use our services.</p>
+        <p>Please read this policy carefully. If you disagree with its terms, please discontinue use of the site.</p>
+
+        <h2>1. Information We Collect</h2>
+        <p>We may collect information about you in a variety of ways:</p>
+        <ul>
+            <li><strong>Personal Data:</strong> When you register, we collect your email address and display name.</li>
+            <li><strong>Profile Data:</strong> Profile photo, biography, and social media usernames you voluntarily provide.</li>
+            <li><strong>Content:</strong> Blog posts, comments, and reactions you create on the platform.</li>
+            <li><strong>Usage Data:</strong> Information automatically collected, including your IP address, browser type, pages visited, and time spent on pages.</li>
+            <li><strong>Cookies:</strong> We use cookies and similar tracking technologies to improve your experience.</li>
+        </ul>
+
+        <h2>2. How We Use Your Information</h2>
+        <ul>
+            <li>To create and manage your account</li>
+            <li>To provide, operate, and maintain our services</li>
+            <li>To improve, personalize, and expand our services</li>
+            <li>To send you updates, security alerts, and support messages</li>
+            <li>To detect and prevent fraud or abuse</li>
+            <li>To comply with legal obligations</li>
+        </ul>
+
+        <h2>3. Google AdSense & Third-Party Advertising</h2>
+        <p>We use <strong>Google AdSense</strong> to display advertisements on our site. Google AdSense uses cookies to serve ads based on your prior visits to our website and other websites on the internet.</p>
+        <p>Google's use of advertising cookies enables it and its partners to serve ads based on your visit to our site and/or other sites on the Internet. You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank">Google Ads Settings</a>.</p>
+        <p>Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to our website. These cookies allow Google and its partners to serve ads based on your browsing history.</p>
+
+        <h2>4. Google Analytics</h2>
+        <p>We use Google Analytics to analyze website traffic and usage patterns. Google Analytics collects information such as how often users visit the site, what pages they visit, and what other sites they used prior to coming to our site. We use this information only to improve our services.</p>
+        <p>You can opt out of Google Analytics tracking by using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Google Analytics Opt-out Browser Add-on</a>.</p>
+
+        <h2>5. Firebase (Data Storage)</h2>
+        <p>We use Google Firebase for authentication and data storage. Firebase is subject to Google's Privacy Policy. Your data is stored securely in Firebase Firestore and Firebase Authentication.</p>
+
+        <h2>6. Data Retention</h2>
+        <p>We retain your personal data for as long as your account is active or as needed to provide you services. You may request deletion of your account and associated data at any time by contacting us.</p>
+
+        <h2>7. Data Security</h2>
+        <p>We use industry-standard security measures to protect your information. However, no method of transmission over the internet is 100% secure.</p>
+
+        <h2>8. Children's Privacy</h2>
+        <p>Our service is not directed to children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have collected such information, please contact us immediately.</p>
+
+        <h2>9. Your Rights (GDPR/CCPA)</h2>
+        <p>Depending on your location, you may have the following rights:</p>
+        <ul>
+            <li>Right to access your personal data</li>
+            <li>Right to rectification of inaccurate data</li>
+            <li>Right to erasure ("right to be forgotten")</li>
+            <li>Right to restrict processing</li>
+            <li>Right to data portability</li>
+            <li>Right to object to processing</li>
+        </ul>
+        <p>To exercise these rights, contact us at: <a href="mailto:privacy@biblog.com">privacy@biblog.com</a></p>
+
+        <h2>10. Cookies Policy</h2>
+        <p>We use the following types of cookies:</p>
+        <ul>
+            <li><strong>Essential cookies:</strong> Required for the website to function properly.</li>
+            <li><strong>Analytics cookies:</strong> Help us understand how visitors interact with our site.</li>
+            <li><strong>Advertising cookies:</strong> Used by Google AdSense to deliver relevant ads.</li>
+        </ul>
+        <p>You can control cookie settings through your browser settings.</p>
+
+        <h2>11. Third-Party Links</h2>
+        <p>Our site may contain links to third-party websites. We have no control over the content and practices of these sites and are not responsible for their privacy policies.</p>
+
+        <h2>12. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the "Last updated" date at the top of this page.</p>
+
+        <h2>13. Contact Us</h2>
+        <p>If you have questions about this Privacy Policy, please contact us:</p>
+        <ul>
+            <li>Email: <a href="mailto:privacy@biblog.com">privacy@biblog.com</a></li>
+            <li>Website: <a href="../index.html">BIBlog</a></li>
+        </ul>
+    </div>
+
+    <script src="../public/js/dark-mode.js"></script>
+    <script src="../public/js/scroll.js"></script>
+    <script src="../public/js/menu.js"></script>
+    <script src="../public/js/language.js"></script>
+    <script type="module" src="../public/js/firebase.js"></script>
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>

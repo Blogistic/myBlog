@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <title>How to Use — BIBlog</title>
+    <style>
+        .htu-page { max-width: 720px; margin: 30px auto; padding: 0 15px 80px; }
+        .htu-page h2 { font-family: 'Josefin Sans', sans-serif; font-size: 1.5rem; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+        .htu-page .subtitle { color: #888; font-family: 'Josefin Sans', sans-serif; font-size: 0.9rem; margin-bottom: 32px; }
+        .htu-section { background: #fff; border: 1px solid #eee; border-radius: 16px; margin-bottom: 20px; overflow: hidden; }
+        .htu-section-title { font-family: 'Josefin Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1px; padding: 14px 20px 10px; border-bottom: 1px solid #f0f0f0; }
+        .htu-row { display: flex; align-items: flex-start; gap: 16px; padding: 16px 20px; border-bottom: 1px solid #f5f5f5; }
+        .htu-row:last-child { border-bottom: none; }
+        .htu-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+        .htu-text p { font-family: 'Josefin Sans', sans-serif; font-size: 0.95rem; margin: 0 0 4px; color: #222; }
+        .htu-text small { font-size: 0.82rem; color: #999; line-height: 1.5; }
+        body.dark-mode .htu-section { background: #16213e; border-color: #2a2a4a; }
+        body.dark-mode .htu-section-title { border-color: #2a2a4a; }
+        body.dark-mode .htu-row { border-color: #2a2a4a; }
+        body.dark-mode .htu-text p { color: #e0e0e0; }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left">
+                <button class="hamburger-btn" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <div class="center"><a href="../index.html">BIBlog</a></div>
+            <div class="right">
+                <button class="dark-mode-btn" id="darkModeBtn"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="../public/img/user/user-1.jpg" alt="profile">
+            <div><p id="menuUserName">Guest</p><span id="menuUserEmail"></span></div>
+        </div>
+        <nav>
+            <a href="../index.html"><i class="fa-solid fa-house"></i> <span data-i18n="menuHome">Home</span></a>
+            <a href="profile.html" id="menuProfileLink" style="display:none;"><i class="fa-solid fa-user"></i> <span data-i18n="menuProfile">My Profile</span></a>
+            <a href="messages.html"><i class="fa-solid fa-comments"></i> <span data-i18n="menuMessages">Messages</span></a>
+            <a href="notifications.html"><i class="fa-solid fa-bell"></i> <span data-i18n="menuNotif">Notifications</span></a>
+            <a href="public.html"><i class="fa-solid fa-globe"></i> <span data-i18n="menuPublic">Public Blogs</span></a>
+            <a href="about.html"><i class="fa-solid fa-circle-info"></i> <span data-i18n="menuAbout">About</span></a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="menuSettings">Settings</span></a>
+            <a href="register.html" id="menuRegBtn"><i class="fa-solid fa-user-plus"></i> <span data-i18n="menuRegister">Register</span></a>
+            <a href="login.html" id="menuLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="menuLogin">Log In</span></a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none;color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="menuLogout">Log Out</span></a>
+        </nav>
+        <div class="side-menu-footer"><small data-i18n="copyright">BIBlog © 2025</small></div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <div class="htu-page">
+        <h2><i class="fa-solid fa-circle-question"></i> How to Use BIBlog</h2>
+        <p class="subtitle">Everything you need to know to get started with BIBlog.</p>
+
+        <!-- Getting Started -->
+        <div class="htu-section">
+            <div class="htu-section-title">Getting Started</div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#f0f0ff;color:#4f46e5;"><i class="fa-solid fa-user-plus"></i></div>
+                <div class="htu-text">
+                    <p>Create an account</p>
+                    <small>Click <strong>Register</strong> in the top menu. Fill in your email and password. That's it — you're in.</small>
+                </div>
+            </div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#fff0f3;color:#e0245e;"><i class="fa-solid fa-right-to-bracket"></i></div>
+                <div class="htu-text">
+                    <p>Log in</p>
+                    <small>Click <strong>Log In</strong>. You can tick "Remember Me" to stay logged in across sessions.</small>
+                </div>
+            </div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#fffbeb;color:#f59e0b;"><i class="fa-solid fa-key"></i></div>
+                <div class="htu-text">
+                    <p>Forgot your password?</p>
+                    <small>Click <strong>Forgot Password</strong> on the login page. We'll send a reset link to your email. Check your spam folder if you don't see it.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Writing & Sharing -->
+        <div class="htu-section">
+            <div class="htu-section-title">Writing & Sharing Posts</div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#f0fff4;color:#2ecc71;"><i class="fa-solid fa-plus"></i></div>
+                <div class="htu-text">
+                    <p>Write a new post</p>
+                    <small>Tap the <strong>+ button</strong> at the bottom right corner (only visible when logged in). Add a title, your story and optionally an image.</small>
+                </div>
+            </div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#fff0e0;color:#ff8800;"><i class="fa-solid fa-share-nodes"></i></div>
+                <div class="htu-text">
+                    <p>Share your post publicly</p>
+                    <small>By default, posts are private (only visible to you). Hover over a post card and click the <strong>Share</strong> button to make it public.</small>
+                </div>
+            </div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#fff0f3;color:#e0245e;"><i class="fa-solid fa-trash"></i></div>
+                <div class="htu-text">
+                    <p>Delete a post</p>
+                    <small>Hover over any of your posts and click the <strong>Trash</strong> icon. This is permanent.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reactions -->
+        <div class="htu-section">
+            <div class="htu-section-title">Reactions & Comments</div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#fff0f3;color:#e0245e;"><i class="fa-solid fa-heart"></i></div>
+                <div class="htu-text">
+                    <p>Like a post</p>
+                    <small>Tap the heart icon on any public post. Tap again to unlike. You must be logged in.</small>
+                </div>
+            </div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#fffbeb;color:#f59e0b;"><i class="fa-solid fa-bookmark"></i></div>
+                <div class="htu-text">
+                    <p>Save a post</p>
+                    <small>Tap the bookmark icon to save a post. Find all saved posts in your Profile → Saved tab.</small>
+                </div>
+            </div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#f0f0ff;color:#4f46e5;"><i class="fa-solid fa-comment"></i></div>
+                <div class="htu-text">
+                    <p>Leave a comment</p>
+                    <small>Click the comment bubble icon to expand the comment section. Type your message and hit send.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile & People -->
+        <div class="htu-section">
+            <div class="htu-section-title">Profile & People</div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#f0f0ff;color:#4f46e5;"><i class="fa-solid fa-user"></i></div>
+                <div class="htu-text">
+                    <p>Edit your profile</p>
+                    <small>Tap the <strong>user icon</strong> FAB (bottom right) or go to <strong>My Profile</strong>. You can add a bio, profile photo, nickname and social media links.</small>
+                </div>
+            </div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#f0fff4;color:#2ecc71;"><i class="fa-solid fa-user-group"></i></div>
+                <div class="htu-text">
+                    <p>Explore other users</p>
+                    <small>Go to the <strong>Explore</strong> tab on the home page. You'll see all registered users. Click on a profile photo or username in any public post to visit their page.</small>
+                </div>
+            </div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#fff0e0;color:#ff8800;"><i class="fa-solid fa-user-plus"></i></div>
+                <div class="htu-text">
+                    <p>Follow someone</p>
+                    <small>On a user's profile page, click <strong>Follow</strong>. Their profile will then appear in your <strong>Discover</strong> tab.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="htu-section">
+            <div class="htu-section-title">Settings & Preferences</div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#1a1a2e;color:#e0e0e0;"><i class="fa-solid fa-moon"></i></div>
+                <div class="htu-text">
+                    <p>Dark Mode</p>
+                    <small>Toggle dark mode from the <strong>moon icon</strong> in any topbar, or go to Settings → Appearance.</small>
+                </div>
+            </div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#f0f0ff;color:#4f46e5;"><i class="fa-solid fa-globe"></i></div>
+                <div class="htu-text">
+                    <p>Change Language</p>
+                    <small>Go to <strong>Settings → Language</strong>. Available languages: Turkish, English, German, French, Spanish, Arabic. The entire interface will update instantly.</small>
+                </div>
+            </div>
+            <div class="htu-row">
+                <div class="htu-icon" style="background:#fff0f3;color:#e0245e;"><i class="fa-solid fa-ellipsis"></i></div>
+                <div class="htu-text">
+                    <p>Three-dot menu</p>
+                    <small>The <strong>•••</strong> button at the bottom right opens a quick menu with links to My Blog, Notifications and this guide.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../public/js/dark-mode.js"></script>
+    <script src="../public/js/scroll.js"></script>
+    <script src="../public/js/menu.js"></script>
+    <script src="../public/js/language.js"></script>
+    <script type="module" src="../public/js/firebase.js"></script>
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKCSJHY7KG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-YKCSJHY7KG');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="BIBlog — The Pit Of High Quality Blogs. Discover and share blog posts on any topic.">
+    <link rel="canonical" href="https://biblog.web.app/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIBlog — Paranormal, Unexplained & Strange Events</title>
+    <meta name="description" content="Dive into the world's most chilling paranormal events, ghost sightings, unexplained phenomena and mysterious occurrences. Share your own stories on BIBlog.">
+    <meta name="keywords" content="paranormal blog, ghost stories, unexplained events, haunted places, supernatural, mystery, strange phenomena, horror blog, conspiracy, cryptids">
+    <meta property="og:title" content="BIBlog — Paranormal & Unexplained Events">
+    <meta property="og:description" content="The darkest corner of the internet. Paranormal stories, ghost encounters and unexplained mysteries shared by real people.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BIBlog — Paranormal & Unexplained">
+    <meta name="twitter:description" content="Ghost sightings, haunted places, cryptids and unexplained events — real stories from real people.">
+    
+    <link rel="stylesheet" href="public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left target">
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a href="https://x.com/Biblog_offical" target="_blank" style="color:inherit;"><i class="fa-brands fa-square-x-twitter"></i></a>
+                <a href="https://www.instagram.com/biblog_offical/" target="_blank" style="color:inherit;"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UC-GrT1yyu8FoyWQAyZSj_xQ" target="_blank" style="color:inherit;"><i class="fa-brands fa-square-youtube"></i></a>
+            </div>
+            <div class="center">
+                <a href="index.html" data-i18n="home">HOME</a>
+                <a href="pages/about.html" data-i18n="about">ABOUT</a>
+                <a href="pages/register.html" id="regBtn" data-i18n="register">REGISTER</a>
+                <a href="pages/login.html" id="loginBtn" data-i18n="login">LOGIN</a>
+                <a href="pages/add.html" id="addBtn" data-i18n="add" style="display:none;">ADD</a>
+                <a href="#" id="logoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;" data-i18n="logout">LOGOUT</a>
+            </div>
+            <div class="right">
+                <button class="dark-mode-btn" id="darkModeBtn" title="Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <div class="searchEngine" id="searchEngine">
+                    <input type="text" id="searchInput" data-i18n-placeholder="search" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hamburger Menü -->
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="public/img/user/user-1.jpg" alt="profil">
+            <div>
+                <p id="menuUserName">Guest</p>
+                <span id="menuUserEmail"></span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html"><i class="fa-solid fa-house"></i> <span data-i18n="menuHome">Home</span></a>
+            <a href="pages/profile.html" id="menuProfileLink" style="display:none;"><i class="fa-solid fa-user"></i> <span data-i18n="menuProfile">My Profile</span></a>
+            <a href="pages/explore.html"><i class="fa-solid fa-compass"></i> <span data-i18n="menuExplore">Explore</span></a>
+            <a href="pages/messages.html"><i class="fa-solid fa-comments"></i> <span data-i18n="menuMessages">Messages</span></a>
+            <a href="pages/notifications.html"><i class="fa-solid fa-bell"></i> <span data-i18n="menuNotif">Notifications</span></a>
+            <a href="pages/public.html"><i class="fa-solid fa-globe"></i> <span data-i18n="menuPublic">Public Blogs</span></a>
+            <a href="pages/about.html"><i class="fa-solid fa-circle-info"></i> <span data-i18n="menuAbout">About</span></a>
+            <a href="pages/settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="menuSettings">Settings</span></a>
+            <a href="pages/register.html" id="menuRegBtn"><i class="fa-solid fa-user-plus"></i> <span data-i18n="menuRegister">Register</span></a>
+            <a href="pages/login.html" id="menuLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="menuLogin">Log In</span></a>
+            <a href="pages/admin.html" id="adminLink" style="display:none; color:#f59e0b;"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="menuLogout">Log Out</span></a>
+        </nav>
+        <div class="side-menu-footer">
+            <small data-i18n="copyright">BIBlog © 2025</small>
+        </div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <header class="header target">
+        <img src="public/img/background/Gemini_Generated_Image_1rwex1rwex1rwex1.png" alt="background">
+        <h1>BIBlog</h1>
+        <h3>The Pit Of High Quality Blogs</h3>
+    </header>
+
+    <!-- X gibi sekmeler -->
+    <div class="feed-tabs">
+        <div class="tab active" id="tabMine" onclick="switchTab('mine')">Discover</div>
+        <div class="tab" id="tabPublic" onclick="switchTab('public')">Following</div>
+    </div>
+
+    <div class="home">
+        <div class="wrapper">
+            <div class="posts" id="postContainer"></div>
+        </div>
+    </div>
+
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h1 id="modalTitle"></h1>
+            <div id="modalMediaContainer"></div>
+            <p id="modalFullText"></p>
+            <div class="authorAndDate" id="modalMeta"></div>
+        </div>
+    </div>
+
+    <!-- 3 nokta menü -->
+    <div id="dotMenuOverlay" onclick="closeDotMenu()" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:8000;"></div>
+    <div id="dotMenu" style="display:none;position:fixed;bottom:100px;right:30px;background:#fff;border:1px solid #eee;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.15);z-index:8001;min-width:180px;overflow:hidden;">
+        <a href="pages/profile.html" id="dotMyBlog" style="display:none;align-items:center;gap:12px;padding:14px 18px;text-decoration:none;color:#222;font-family:'Josefin Sans',sans-serif;font-size:0.9rem;border-bottom:1px solid #f0f0f0;">
+            <i class="fa-solid fa-book-open" style="width:18px;text-align:center;"></i> My Blog
+        </a>
+        <a href="pages/notifications.html" id="dotNotif" style="display:none;align-items:center;gap:12px;padding:14px 18px;text-decoration:none;color:#222;font-family:'Josefin Sans',sans-serif;font-size:0.9rem;border-bottom:1px solid #f0f0f0;">
+            <i class="fa-solid fa-bell" style="width:18px;text-align:center;"></i> Notifications
+        </a>
+        <a href="pages/how-to-use.html" style="display:flex;align-items:center;gap:12px;padding:14px 18px;text-decoration:none;color:#222;font-family:'Josefin Sans',sans-serif;font-size:0.9rem;">
+            <i class="fa-solid fa-circle-question" style="width:18px;text-align:center;"></i> How to Use
+        </a>
+    </div>
+
+    <!-- Sağ alt FAB -->
+    <div class="fab-container" id="fabContainer">
+        <a href="pages/add.html" class="fab fab-add" id="fabAdd" style="display:none;" title="New Post">
+            <i class="fa-solid fa-plus"></i>
+        </a>
+        <a href="pages/profile.html" class="fab fab-profile" id="fabProfile" style="display:none;" title="Profile">
+            <i class="fa-solid fa-user"></i>
+        </a>
+        <button class="fab" id="fabDots" onclick="toggleDotMenu()" title="More"
+            style="background:#333;display:flex;">
+            <i class="fa-solid fa-ellipsis"></i>
+        </button>
+    </div>
+
+    <script>
+    function toggleDotMenu() {
+        const m = document.getElementById("dotMenu");
+        const o = document.getElementById("dotMenuOverlay");
+        const open = m.style.display === "block";
+        m.style.display = open ? "none" : "block";
+        o.style.display = open ? "none" : "block";
+    }
+    function closeDotMenu() {
+        document.getElementById("dotMenu").style.display = "none";
+        document.getElementById("dotMenuOverlay").style.display = "none";
+    }
+    // My Blog ve Notifications sadece login olunca görünsün
+    document.addEventListener("DOMContentLoaded", () => {
+        const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+        if (isLoggedIn) {
+            const mb = document.getElementById("dotMyBlog");
+            const nb = document.getElementById("dotNotif");
+            if (mb) mb.style.display = "flex";
+            if (nb) nb.style.display = "flex";
+        }
+    });
+    </script>
+
+
+    <!-- ═══════════════════════════════════════════════════
+         GOOGLE ADSENSE AD UNIT
+         Bu bloğu AdSense panelinden aldığın gerçek kod ile değiştir.
+         ═══════════════════════════════════════════════════ -->
+    <div style="width:100%;text-align:center;margin:16px 0;">
+    </div>
+
+    <footer>
+        <p>Credits: Google | Gemini AI</p>
+        <p>Powered by <a href="https://firebase.google.com/" target="_blank">Firebase</a></p>
+        <p>Images from <a href="https://imgbb.com/" target="_blank">ImgBB</a></p>
+        <p>Built with Claude AI</p>
+        <div style="margin-top:16px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;font-size:0.82rem;">
+            <a href="pages/privacy-policy.html" style="color:#888;">Privacy Policy</a>
+            <a href="pages/terms.html" style="color:#888;">Terms of Service</a>
+            <a href="pages/cookie-policy.html" style="color:#888;">Cookie Policy</a>
+            <a href="pages/about.html" style="color:#888;">About</a>
+        </div>
+        <p style="margin-top:12px;font-size:0.78rem;color:#666;">© 2025 BIBlog. All rights reserved.</p>
+    </footer>
+
+    <script src="public/js/dark-mode.js"></script>
+    <script src="public/js/scroll.js"></script>
+    <script src="public/js/modal.js"></script>
+    <script src="public/js/search.js"></script>
+    <script src="public/js/menu.js"></script>
+    <script src="public/js/language.js"></script>
+    <script type="module" src="public/js/firebase.js"></script>
+    <script type="module" src="public/js/auth-kontrol.js"></script>
+    <script type="module" src="public/js/get-posts.js"></script>
+    <script src="public/js/cookie-consent.js"></script>
+    <script src="public/js/terms-consent.js"></script>
+
+    <!-- Notification Permission Popup -->
+    <div id="biblogNotificationPopup" style="display:none; position:fixed; top:20px; left:20px; background:#fff; border-radius:16px; box-shadow:0 8px 32px rgba(0,0,0,0.2); padding:20px; z-index:10000; max-width:320px; font-family:'Josefin Sans',sans-serif;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+            <div style="width:40px; height:40px; background:linear-gradient(135deg,#667eea,#764ba2); border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                <i class="fa-solid fa-bell" style="color:#fff; font-size:18px;"></i>
+            </div>
+            <div>
+                <h3 style="margin:0; font-size:1rem; color:#333;">BIBlog</h3>
+                <p style="margin:0; font-size:0.85rem; color:#666;">wants to send you notifications</p>
+            </div>
+        </div>
+        <p style="font-size:0.85rem; color:#555; margin-bottom:16px; line-height:1.5;">Enable notifications to receive updates about new posts, messages, and more.</p>
+        <div style="display:flex; gap:10px;">
+            <button id="biblogDenyBtn" onclick="handleBIBlogNotification(false)" style="flex:1; padding:10px; border:1px solid #ddd; background:#fff; border-radius:8px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-size:0.85rem; color:#666;">Block</button>
+            <button id="biblogAllowBtn" onclick="handleBIBlogNotification(true)" style="flex:1; padding:10px; border:none; background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border-radius:8px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-size:0.85rem;">Allow</button>
+        </div>
+    </div>
+
+    <script>
+    function handleBIBlogNotification(allow) {
+        const popup = document.getElementById('biblogNotificationPopup');
+        popup.style.display = 'none';
+        localStorage.setItem('biblog_notif_permission', allow ? 'granted' : 'denied');
+        
+        if (allow && 'Notification' in window) {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    showBIBlogNotification();
+                }
+            });
+        }
+    }
+
+    function showBIBlogNotification() {
+        if (Notification.permission === 'granted') {
+            new Notification('BIBlog', {
+                body: 'Notifications enabled! You will now receive updates about new posts and messages.',
+                icon: 'public/img/favicon.png',
+                tag: 'biblog-welcome'
+            });
+        }
+    }
+
+    function showBIBlogMessageNotification(sender, message) {
+        if (Notification.permission === 'granted') {
+            new Notification(sender, {
+                body: message,
+                icon: 'public/img/favicon.png',
+                tag: 'biblog-message'
+            });
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedPermission = localStorage.getItem('biblog_notif_permission');
+        if (!savedPermission) {
+            setTimeout(() => {
+                const popup = document.getElementById('biblogNotificationPopup');
+                popup.style.display = 'block';
+                popup.style.animation = 'slideIn 0.3s ease-out';
+            }, 1500);
+        }
+    });
+    </script>
+    <style>
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    </style>
+</body>
+</html>

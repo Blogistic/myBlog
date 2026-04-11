@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Profil - BIBlog</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left">
+                <button class="hamburger-btn" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <div class="center"><a href="../index.html">BIBlog</a></div>
+            <div class="right">
+                <button class="dark-mode-btn" id="darkModeBtn"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="../public/img/user/user-1.jpg" alt="profil">
+            <div>
+                <p id="menuUserName">Guest</p>
+                <span id="menuUserEmail"></span>
+            </div>
+        </div>
+        <nav>
+            <a href="../index.html"><i class="fa-solid fa-house"></i> <span data-i18n="menuHome">Home</span></a>
+            <a href="./profile.html" id="menuProfileLink"><i class="fa-solid fa-user"></i> <span data-i18n="menuProfile">My Profile</span></a>
+            <a href="explore.html"><i class="fa-solid fa-compass"></i> <span data-i18n="menuExplore">Explore</span></a>
+            <a href="notifications.html"><i class="fa-solid fa-bell"></i> <span data-i18n="menuNotif">Notifications</span></a>
+            <a href="messages.html"><i class="fa-solid fa-comments"></i> <span data-i18n="menuMessages">Messages</span></a>
+            <a href="./public.html"><i class="fa-solid fa-globe"></i> <span data-i18n="menuPublic">Public Blogs</span></a>
+            <a href="./about.html"><i class="fa-solid fa-circle-info"></i> <span data-i18n="menuAbout">About</span></a>
+            <a href="./settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="menuSettings">Settings</span></a>
+            <a href="./admin.html" id="adminLink" style="display:none; color:#f59e0b;"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="signOut">Log Out</span></a>
+        </nav>
+        <div class="side-menu-footer"><small data-i18n="copyright">BIBlog © 2025</small></div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <div class="profile-page">
+        <!-- Profil Header -->
+        <div class="profile-header">
+            <div class="profile-photo-wrapper">
+                <img id="profilePhoto" src="../public/img/user/user-1.jpg" alt="profil fotoğrafı">
+                <label for="photoUpload" class="photo-edit-btn"><i class="fa-solid fa-camera"></i></label>
+                <input type="file" id="photoUpload" accept="image/*" style="display:none;">
+            </div>
+            <div class="profile-info">
+                <h2 id="profileName">...</h2>
+                <p id="profileEmail" style="color:#888; font-size:0.9rem;"></p>
+                <div class="profile-stats">
+                    <div><strong id="statPosts">0</strong><span data-i18n="posts">Posts</span></div>
+                    <div><strong id="statLikes">0</strong><span data-i18n="likes">Likes</span></div>
+                </div>
+                <!-- Sosyal Medya Linkleri -->
+                <div class="social-links" style="display:flex; gap:12px; margin-top:12px; flex-wrap:wrap;">
+                    <a id="ytLink" href="#" target="_blank" style="display:none; color:#ff0000; font-size:1.4rem;"><i class="fa-brands fa-youtube"></i></a>
+                    <a id="igLink" href="#" target="_blank" style="display:none; color:#e1306c; font-size:1.4rem;"><i class="fa-brands fa-instagram"></i></a>
+                    <a id="ttLink" href="#" target="_blank" style="display:none; color:#000; font-size:1.4rem;"><i class="fa-brands fa-tiktok"></i></a>
+                    <a id="liLink" href="#" target="_blank" style="display:none; color:#0077b5; font-size:1.4rem;"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Change Nickname -->
+        <div class="profile-bio">
+            <p style="font-weight:600; margin-bottom:8px;"><i class="fa-solid fa-pen"></i> <span data-i18n="changeNickname">Change Nickname</span></p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <input type="text" id="nicknameInput" data-i18n-placeholder="newNickname" placeholder="New nickname..." style="flex:1; padding:8px 12px; border:1px solid #ddd; border-radius:10px; outline:none; font-family:'Josefin Sans',sans-serif;">
+                <button id="saveNicknameBtn" data-i18n="save" style="padding:8px 18px; background:#000; color:#fff; border:none; border-radius:10px; cursor:pointer; font-family:'Josefin Sans',sans-serif;">Save</button>
+            </div>
+        </div>
+
+        <!-- Biyografi -->
+        <div class="profile-bio">
+            <p id="bioText" style="color:#888; font-style:italic;" data-i18n="noBio">No bio yet.</p>
+            <button id="editBioBtn"><i class="fa-solid fa-pen"></i> <span data-i18n="editBio">Edit Bio</span></button>
+            <div id="bioEditArea" style="display:none;">
+                <textarea id="bioInput" data-i18n-placeholder="bioPlaceholder" placeholder="Tell us about yourself..." maxlength="200"></textarea>
+                <button id="saveBioBtn" data-i18n="save">Save</button>
+            </div>
+        </div>
+
+        <!-- Social Media Accounts -->
+        <div class="profile-bio">
+            <p style="font-weight:600; margin-bottom:12px;"><i class="fa-solid fa-share-nodes"></i> Social Media Accounts</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <i class="fa-brands fa-youtube" style="color:#ff0000; font-size:1.2rem; width:20px;"></i>
+                    <input type="text" id="ytInput" placeholder="YouTube username" style="flex:1; padding:8px 12px; border:1px solid #ddd; border-radius:10px; outline:none; font-family:'Josefin Sans',sans-serif;">
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <i class="fa-brands fa-instagram" style="color:#e1306c; font-size:1.2rem; width:20px;"></i>
+                    <input type="text" id="igInput" placeholder="Instagram username" style="flex:1; padding:8px 12px; border:1px solid #ddd; border-radius:10px; outline:none; font-family:'Josefin Sans',sans-serif;">
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <i class="fa-brands fa-tiktok" style="font-size:1.2rem; width:20px;"></i>
+                    <input type="text" id="ttInput" placeholder="TikTok username" style="flex:1; padding:8px 12px; border:1px solid #ddd; border-radius:10px; outline:none; font-family:'Josefin Sans',sans-serif;">
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <i class="fa-brands fa-linkedin" style="color:#0077b5; font-size:1.2rem; width:20px;"></i>
+                    <input type="text" id="liInput" placeholder="LinkedIn username" style="flex:1; padding:8px 12px; border:1px solid #ddd; border-radius:10px; outline:none; font-family:'Josefin Sans',sans-serif;">
+                </div>
+                <button id="saveSocialBtn" style="padding:10px; background:#000; color:#fff; border:none; border-radius:10px; cursor:pointer; font-family:'Josefin Sans',sans-serif;">Sosyal Medyayı Save</button>
+            </div>
+        </div>
+
+        <!-- Sekmeler -->
+        <div class="profile-tabs">
+            <div class="profile-tab active" onclick="switchProfileTab('posts')">
+                <i class="fa-solid fa-grid-2"></i> <span data-i18n="myPosts">My Posts</span>
+            </div>
+            <div class="profile-tab" onclick="switchProfileTab('liked')">
+                <i class="fa-solid fa-heart"></i> <span data-i18n="liked">Liked</span>
+            </div>
+            <div class="profile-tab" onclick="switchProfileTab('saved')">
+                <i class="fa-solid fa-bookmark"></i> <span data-i18n="saved">Saved</span>
+            </div>
+        </div>
+
+        <div class="posts" id="profilePostContainer"></div>
+    </div>
+
+    <div class="fab-container">
+        <a href="./add.html" class="fab fab-add" id="fabAdd" style="display:none;" translate="no">
+            <i class="fa-solid fa-plus"></i>
+        </a>
+    </div>
+
+    <script src="../public/js/dark-mode.js"></script>
+    <script src="../public/js/search.js"></script>
+    <script src="../public/js/scroll.js"></script>
+    <script src="../public/js/menu.js"></script>
+    <script type="module" src="../public/js/firebase.js"></script>
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script type="module" src="../public/js/profile.js"></script>
+    <script src="../public/js/language.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../public/css/index.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+   <title>Register - BIBlog</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+</head>
+<body>
+   <div class="topbar">
+      <div class="wrapper target">
+         <div class="left">
+            <i class="fa-brands fa-square-x-twitter"></i>
+            <i class="fa-brands fa-square-instagram"></i>
+            <i class="fa-brands fa-square-facebook"></i>
+         </div>
+          <div class="center">
+             <a href="../index.html" data-i18n="home">HOME</a>
+             <a href="./about.html" data-i18n="about">ABOUT</a>
+             <a href="./register.html" data-i18n="register">REGISTER</a>
+             <a href="./login.html" data-i18n="login">LOGIN</a>
+          </div>
+         <div class="right">
+            <div class="searchEngine" id="searchEngine">
+               <input type="text" id="searchInput" data-i18n-placeholder="search" placeholder="Search...">
+               <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+            </div>
+         </div>
+      </div>
+   </div>
+    <div class="logReg">
+       <img src="../public/img/background/register.png" alt="register">
+       <form id="registerForm">
+          <div class="formGroup">
+             <input type="email" id="regEmail" required>
+             <span>Email *</span>
+          </div>
+          <div class="formGroup">
+             <input type="text" id="regUser" required>
+             <span>Username *</span>
+          </div>
+          <div class="formGroup">
+             <input type="password" id="regPassword" required>
+             <span>Password *</span>
+          </div>
+          
+          <!-- Terms Consent -->
+          <div class="terms-consent">
+             <label class="checkbox-label">
+                <input type="checkbox" id="termsConsent">
+                <span class="checkmark"></span>
+                <span class="consent-text">
+                   I agree to the 
+                   <a href="terms.html" target="_blank">Terms of Service</a>, 
+                   <a href="privacy-policy.html" target="_blank">Privacy Policy</a>, and 
+                   <a href="cookie-policy.html" target="_blank">Cookie Policy</a>
+                </span>
+             </label>
+          </div>
+          
+          <div class="btnGroup">
+             <a href="./login.html">Do you have an account?</a>
+             <button type="submit" id="registerBtn">Register</button>
+          </div>
+       </form>
+    </div>
+    
+    <style>
+    .terms-consent {
+       margin-bottom: 15px;
+       padding: 12px;
+       background: rgba(79, 70, 229, 0.05);
+       border-radius: 10px;
+       border: 1px solid rgba(79, 70, 229, 0.15);
+    }
+    .checkbox-label {
+       display: flex;
+       align-items: flex-start;
+       gap: 10px;
+       cursor: pointer;
+       font-family: 'Josefin Sans', sans-serif;
+       font-size: 0.85rem;
+       color: #555;
+    }
+    .checkbox-label input {
+       width: 18px;
+       height: 18px;
+       margin-top: 2px;
+       cursor: pointer;
+       accent-color: #4f46e5;
+       flex-shrink: 0;
+    }
+    .consent-text {
+       line-height: 1.4;
+    }
+    .consent-text a {
+       color: #4f46e5;
+       text-decoration: none;
+    }
+    .consent-text a:hover {
+       text-decoration: underline;
+    }
+    body.dark-mode .terms-consent {
+       background: rgba(102, 126, 234, 0.1);
+       border-color: rgba(102, 126, 234, 0.2);
+    }
+    body.dark-mode .checkbox-label {
+       color: #b0b0b0;
+    }
+    </style>
+   <script src="../public/js/search.js"></script>
+   <script src="../public/js/scroll.js"></script>
+   <script type="module" src="../public/js/firebase.js"></script>
+   <script type="module" src="../public/js/register.js"></script>
+   <script type="module" src="../public/js/auth-kontrol.js"></script>
+     <script src="../public/js/language.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+</body>
+</html>

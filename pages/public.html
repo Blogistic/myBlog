@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIBlog Public Archive</title>
+    
+    <!-- CSS Dosyaları -->
+    <link rel="stylesheet" href="../public/css/index.css">
+    
+    <!-- İkon Kütüphanesi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <!-- Google AdSense -->
+</head>
+<body>
+
+    <!-- Üst Menü ve Arama Çubuğu -->
+    <div class="topbar">
+        <div class="wrapper target active">
+            <div class="left">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-house"></i> <span data-i18n="home">HOME</span>
+                </a>
+            </div>
+            <div class="center" style="color: #ff4d4d; font-weight: bold; letter-spacing: 2px;" data-i18n="publicArchive">
+                PUBLIC ARCHIVE
+            </div>
+            <div class="right">
+                <button class="dark-mode-btn" id="darkModeBtn" title="Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <div class="searchEngine" id="searchEngine">
+                    <input type="text" id="searchInput" data-i18n-placeholder="search" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ana İçerik Alanı -->
+    <div class="home" style="margin-top: 80px;">
+        <div class="wrapper">
+            <!-- JS tarafından doldurulacak alan -->
+            <div class="posts" id="postContainer">
+                <p style="text-align: center; width: 100%;" data-i18n="loadingPosts">Loading posts...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Detay Penceresi (Modal) -->
+    <div id="postModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h1 id="modalTitle"></h1>
+            <div id="modalMediaContainer"></div>
+            <p id="modalFullText"></p>
+            <div id="modalMeta" class="authorAndDate"></div>
+        </div>
+    </div>
+
+    <!-- Sayfa Altı -->
+    <footer style="text-align: center; padding: 20px; margin-top: 50px; border-top: 1px solid #333; color: #888;">
+        <p>🛸 BIBlog — Public Archive</p>
+        <p><small>Data is fetched live from Firebase Firestore.</small></p>
+    </footer>
+
+    <!-- SCRIPT YÜKLEME SIRALAMASI (ÖNEMLİ) -->
+    
+    <!-- 1. Temel Bağlantı -->
+    <script type="module" src="../public/js/firebase.js"></script>
+    
+    <!-- 2. Yardımcı Fonksiyonlar (Arama ve Modal Hazırlığı) -->
+    <script src="../public/js/modal.js"></script>
+    <script src="../public/js/search.js"></script>
+    <script src="../public/js/scroll.js"></script>
+    
+    <script src="../public/js/dark-mode.js"></script>
+    <!-- 3. Ana İşlem (Verileri Çeken ve Her Şeyi Başlatan) -->
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script type="module" src="../public/js/public.js"></script>
+    <script src="../public/js/language.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>

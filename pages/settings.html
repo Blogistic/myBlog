@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Settings - BIBlog</title>
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left">
+                <button class="hamburger-btn" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <div class="center"><a href="../index.html">BIBlog</a></div>
+            <div class="right">
+                <button class="dark-mode-btn" id="darkModeBtn"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="../public/img/user/user-1.jpg" alt="profil">
+            <div>
+                <p id="menuUserName">Guest</p>
+                <span id="menuUserEmail"></span>
+            </div>
+        </div>
+        <nav>
+            <a href="../index.html"><i class="fa-solid fa-house"></i> <span data-i18n="menuHome">HOME</span></a>
+            <a href="profile.html" id="menuProfileLink" style="display:none;"><i class="fa-solid fa-user"></i> <span data-i18n="menuProfile">My Profile</span></a>
+            <a href="explore.html"><i class="fa-solid fa-compass"></i> <span data-i18n="menuExplore">Explore</span></a>
+            <a href="messages.html"><i class="fa-solid fa-comments"></i> <span data-i18n="menuMessages">Messages</span></a>
+            <a href="notifications.html"><i class="fa-solid fa-bell"></i> <span data-i18n="menuNotif">Notifications</span></a>
+            <a href="public.html"><i class="fa-solid fa-globe"></i> <span data-i18n="menuPublic">Public Blogs</span></a>
+            <a href="about.html"><i class="fa-solid fa-circle-info"></i> <span data-i18n="menuAbout">About</span></a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="menuSettings">Settings</span></a>
+            <a href="./admin.html" id="adminLink" style="display:none; color:#f59e0b;"><i class="fa-solid fa-shield-halved"></i> Admin Panel</a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="menuLogout">Log Out</span></a>
+        </nav>
+        <div class="side-menu-footer"><small data-i18n="copyright">BIBlog © 2025</small></div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <div class="settings-page">
+        <h2 class="settings-title"><i class="fa-solid fa-gear"></i> <span data-i18n="settings">Settings</span></h2>
+
+        <!-- Quick Language Switch -->
+        <div style="background:linear-gradient(135deg,#667eea,#764ba2);border-radius:12px;padding:16px;margin-bottom:20px;text-align:center;">
+            <p style="color:#fff;margin:0 0 10px;font-family:'Josefin Sans',sans-serif;" data-i18n="language">Language</p>
+            <button onclick="changeLanguage('en')" style="padding:10px 24px;background:#fff;color:#667eea;border:none;border-radius:8px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-weight:600;">
+                🇬🇧 Switch to English
+            </button>
+        </div>
+
+        <!-- Appearance -->
+        <div class="settings-section">
+            <h3 class="settings-section-title" data-i18n="appearance">Appearance</h3>
+            <div class="settings-row">
+                <div class="settings-row-left">
+                    <i class="fa-solid fa-moon"></i>
+                    <div>
+                        <p data-i18n="darkMode">Dark Mode</p>
+                        <small data-i18n="darkModeDesc">Toggle dark theme</small>
+                    </div>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <!-- Dil Seçimi -->
+            <div class="settings-row">
+                <div class="settings-row-left">
+                    <i class="fa-solid fa-globe"></i>
+                    <div>
+                        <p data-i18n="language">Language</p>
+                        <small data-i18n="languageDesc">Select interface language</small>
+                    </div>
+                </div>
+                <div class="lang-select-wrapper">
+                    <div class="lang-select" id="langSelect">
+                        <span id="langSelected">🇬🇧 English</span>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    <ul class="lang-dropdown" id="langDropdown">
+                        <li data-lang="tr">🇹🇷 Türkçe</li>
+                        <li data-lang="en">🇬🇧 English</li>
+                        <li data-lang="de">🇩🇪 Deutsch</li>
+                        <li data-lang="fr">🇫🇷 Français</li>
+                        <li data-lang="es">🇪🇸 Español</li>
+                        <li data-lang="ar">🇸🇦 العربية</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account -->
+        <div class="settings-section">
+            <h3 class="settings-section-title" data-i18n="account">Account</h3>
+            <div class="settings-row" onclick="window.location.href='profile.html'" style="cursor:pointer;">
+                <div class="settings-row-left">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <div>
+                        <p data-i18n="editProfile">Edit Profile</p>
+                        <small data-i18n="editProfileDesc">Name, photo, bio</small>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right" style="color:#bbb;"></i>
+            </div>
+            <div class="settings-row" onclick="window.location.href='forgot-password.html'" style="cursor:pointer;">
+                <div class="settings-row-left">
+                    <i class="fa-solid fa-key"></i>
+                    <div>
+                        <p data-i18n="changePassword">Change Password</p>
+                        <small data-i18n="changePasswordDesc">Send reset link to your email</small>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-right" style="color:#bbb;"></i>
+            </div>
+        </div>
+
+        <!-- About -->
+        <div class="settings-section">
+            <h3 class="settings-section-title" data-i18n="aboutSection">About</h3>
+            <div class="settings-row">
+                <div class="settings-row-left">
+                    <i class="fa-solid fa-code"></i>
+                    <div>
+                        <p data-i18n="developer">Developer</p>
+                        <small>BIBlog Team</small>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-row">
+                <div class="settings-row-left">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <div>
+                        <p data-i18n="version">Version</p>
+                        <small>BIBlog v1.0</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../public/js/scroll.js"></script>
+    <script src="../public/js/menu.js"></script>
+    <script src="../public/js/dark-mode.js"></script>
+    <script src="../public/js/language.js"></script>
+    <script type="module" src="../public/js/firebase.js"></script>
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>

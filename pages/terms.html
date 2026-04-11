@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Terms of Service - BIBlog</title>
+    <style>
+        .legal-page { max-width: 800px; margin: 40px auto; padding: 0 20px 80px; font-family: 'Josefin Sans', sans-serif; }
+        .legal-page h1 { font-size: 2rem; margin-bottom: 8px; }
+        .legal-page .last-updated { color: #888; font-size: 0.85rem; margin-bottom: 32px; }
+        .legal-page h2 { font-size: 1.2rem; margin: 28px 0 10px; color: #222; }
+        .legal-page p, .legal-page li { font-size: 0.95rem; line-height: 1.8; color: #444; }
+        .legal-page ul { padding-left: 20px; margin: 8px 0 16px; }
+        .legal-page a { color: #4f46e5; }
+        body.dark-mode .legal-page h1, body.dark-mode .legal-page h2 { color: #e0e0e0; }
+        body.dark-mode .legal-page p, body.dark-mode .legal-page li { color: #b0b0b0; }
+        body.dark-mode .legal-page { background: transparent; }
+        body.dark-mode .legal-page .last-updated { color: #888; }
+    </style>
+    <!-- Google AdSense -->
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left"><button class="hamburger-btn" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button></div>
+            <div class="center"><a href="../index.html">BIBlog</a></div>
+            <div class="right"><button class="dark-mode-btn" id="darkModeBtn"><i class="fa-solid fa-moon"></i></button></div>
+        </div>
+    </div>
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="../public/img/user/user-1.jpg" alt="profile">
+            <div><p id="menuUserName">Guest</p><span id="menuUserEmail"></span></div>
+        </div>
+        <nav>
+            <a href="../index.html"><i class="fa-solid fa-house"></i> <span data-i18n="menuHome">Home</span></a>
+            <a href="profile.html" id="menuProfileLink" style="display:none;"><i class="fa-solid fa-user"></i> <span data-i18n="menuProfile">My Profile</span></a>
+            <a href="public.html"><i class="fa-solid fa-globe"></i> <span data-i18n="menuPublic">Public Blogs</span></a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="menuSettings">Settings</span></a>
+            <a href="privacy-policy.html"><i class="fa-solid fa-shield"></i> <span data-i18n="menuPrivacy">Privacy Policy</span></a>
+            <a href="cookie-policy.html"><i class="fa-solid fa-cookie"></i> <span data-i18n="menuCookie">Cookie Policy</span></a>
+            <a href="terms.html"><i class="fa-solid fa-file-contract"></i> <span data-i18n="menuTerms">Terms of Service</span></a>
+            <a href="register.html" id="menuRegBtn"><i class="fa-solid fa-user-plus"></i> <span data-i18n="menuRegister">Register</span></a>
+            <a href="login.html" id="menuLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="menuLogin">Log In</span></a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="menuLogout">Log Out</span></a>
+        </nav>
+        <div class="side-menu-footer"><small data-i18n="copyright">BIBlog © 2025</small></div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <div class="legal-page">
+        <h1><i class="fa-solid fa-file-contract" style="color:#4f46e5;margin-right:10px;"></i>Terms of Service</h1>
+        <p class="last-updated">Last updated: January 1, 2025</p>
+
+        <p>These Terms of Service ("Terms") govern your use of the <strong>BIBlog</strong> website and services. By accessing or using our service, you agree to be bound by these Terms.</p>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By creating an account or using BIBlog, you agree to these Terms. If you do not agree, please do not use our service.</p>
+
+        <h2>2. User Accounts</h2>
+        <ul>
+            <li>You must be at least 13 years old to use our service.</li>
+            <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
+            <li>You are responsible for all activities that occur under your account.</li>
+            <li>You must provide accurate and complete information when registering.</li>
+            <li>One person may not maintain more than one account.</li>
+        </ul>
+
+        <h2>3. Content Guidelines</h2>
+        <p>You are solely responsible for content you post. You agree NOT to post content that:</p>
+        <ul>
+            <li>Is illegal, harmful, threatening, abusive, or harassing</li>
+            <li>Is defamatory, obscene, vulgar, or pornographic</li>
+            <li>Infringes any patent, trademark, trade secret, copyright, or other intellectual property</li>
+            <li>Contains unsolicited advertising or spam</li>
+            <li>Impersonates any person or entity</li>
+            <li>Contains hate speech based on race, gender, religion, nationality, or sexual orientation</li>
+            <li>Promotes violence or illegal activities</li>
+        </ul>
+
+        <h2>4. Content Ownership</h2>
+        <p>You retain ownership of content you post. By posting on BIBlog, you grant us a non-exclusive, worldwide, royalty-free license to use, display, and distribute your content on our platform.</p>
+
+        <h2>5. Prohibited Activities</h2>
+        <ul>
+            <li>Attempting to gain unauthorized access to any part of the service</li>
+            <li>Using automated tools to scrape or collect data</li>
+            <li>Interfering with the proper working of the service</li>
+            <li>Bypassing any security measures</li>
+            <li>Creating fake accounts or impersonating others</li>
+        </ul>
+
+        <h2>6. Advertising</h2>
+        <p>BIBlog displays advertisements through Google AdSense. By using our service, you consent to the display of advertisements. We do not control the content of third-party advertisements.</p>
+
+        <h2>7. Intellectual Property</h2>
+        <p>The BIBlog service, including its design, logo, and code, is owned by BIBlog and protected by intellectual property laws. You may not copy, modify, or distribute our proprietary materials without permission.</p>
+
+        <h2>8. Disclaimers</h2>
+        <p>BIBlog is provided "as is" without warranties of any kind. We do not guarantee that the service will be uninterrupted, error-free, or free of harmful components. Content posted by users does not represent our views or opinions.</p>
+
+        <h2>9. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, BIBlog shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the service.</p>
+
+        <h2>10. Account Termination</h2>
+        <p>We reserve the right to suspend or terminate accounts that violate these Terms, at our sole discretion and without notice. You may also delete your account at any time.</p>
+
+        <h2>11. Governing Law</h2>
+        <p>These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.</p>
+
+        <h2>12. Changes to Terms</h2>
+        <p>We reserve the right to modify these Terms at any time. Continued use of the service after changes constitutes acceptance of the new Terms.</p>
+
+        <h2>13. Contact</h2>
+        <p>For questions about these Terms, contact us at: <a href="mailto:legal@biblog.com">legal@biblog.com</a></p>
+    </div>
+
+    <script src="../public/js/dark-mode.js"></script>
+    <script src="../public/js/scroll.js"></script>
+    <script src="../public/js/menu.js"></script>
+    <script src="../public/js/language.js"></script>
+    <script type="module" src="../public/js/firebase.js"></script>
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>

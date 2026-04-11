@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>User Profile - BIBlog</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left">
+                <button class="hamburger-btn" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <div class="center"><a href="../index.html">BIBlog</a></div>
+            <div class="right">
+                <button class="dark-mode-btn" id="darkModeBtn" title="Dark Mode"><i class="fa-solid fa-moon"></i></button>
+                <div class="searchEngine" id="searchEngine">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="../public/img/user/user-1.jpg" alt="profile">
+            <div>
+                <p id="menuUserName">Guest</p>
+                <span id="menuUserEmail"></span>
+            </div>
+        </div>
+        <nav>
+            <a href="../index.html"><i class="fa-solid fa-house"></i> <span data-i18n="menuHome">Home</span></a>
+            <a href="profile.html" id="menuProfileLink" style="display:none;"><i class="fa-solid fa-user"></i> <span data-i18n="menuProfile">My Profile</span></a>
+            <a href="explore.html"><i class="fa-solid fa-compass"></i> <span data-i18n="menuExplore">Explore</span></a>
+            <a href="notifications.html"><i class="fa-solid fa-bell"></i> <span data-i18n="menuNotif">Notifications</span></a>
+            <a href="messages.html"><i class="fa-solid fa-comments"></i> <span data-i18n="menuMessages">Messages</span></a>
+            <a href="public.html"><i class="fa-solid fa-globe"></i> <span data-i18n="menuPublic">Public Blogs</span></a>
+            <a href="about.html"><i class="fa-solid fa-circle-info"></i> <span data-i18n="menuAbout">About</span></a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> <span data-i18n="menuSettings">Settings</span></a>
+            <a href="register.html" id="menuRegBtn"><i class="fa-solid fa-user-plus"></i> <span data-i18n="menuRegister">Register</span></a>
+            <a href="login.html" id="menuLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> <span data-i18n="menuLogin">Log In</span></a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="menuLogout">Log Out</span></a>
+        </nav>
+        <div class="side-menu-footer"><small data-i18n="copyright">BIBlog © 2025</small></div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <!-- Profile Area -->
+    <div class="profile-page">
+        <div class="profile-header">
+            <div class="profile-photo-wrapper">
+                <img id="profilePhoto" src="../public/img/user/user-1.jpg" alt="profile photo">
+            </div>
+            <div class="profile-info">
+                <h2 id="profileName">Loading...</h2>
+                <div class="profile-stats">
+                    <div><strong id="statPosts">0</strong><span>Posts</span></div>
+                </div>
+                <!-- Social Media Links -->
+                <div class="social-links" style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+                    <a id="ytLink"  href="#" target="_blank" style="display:none;color:#ff0000;font-size:1.4rem;"><i class="fa-brands fa-youtube"></i></a>
+                    <a id="igLink"  href="#" target="_blank" style="display:none;color:#e1306c;font-size:1.4rem;"><i class="fa-brands fa-instagram"></i></a>
+                    <a id="ttLink"  href="#" target="_blank" style="display:none;color:#000;font-size:1.4rem;"><i class="fa-brands fa-tiktok"></i></a>
+                    <a id="liLink"  href="#" target="_blank" style="display:none;color:#0077b5;font-size:1.4rem;"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <!-- Action Buttons -->
+                <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+                    <button id="followBtn"
+                        style="padding:10px 22px;background:#000;color:#fff;border:none;border-radius:10px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:0.9rem;">
+                        <i class="fa-solid fa-user-plus"></i> Follow
+                    </button>
+                    <button id="messageBtn"
+                        style="padding:10px 22px;background:#f0f0f0;color:#333;border:none;border-radius:10px;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:0.9rem;">
+                        <i class="fa-solid fa-envelope"></i> Message
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="profile-bio">
+            <p id="bioText" style="color:#888;font-style:italic;">No bio yet.</p>
+        </div>
+
+        <!-- Posts -->
+        <div style="font-family:'Josefin Sans',sans-serif;font-size:0.85rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin:20px 0 10px;">
+            Public Posts
+        </div>
+        <div class="posts" id="userPostContainer">
+            <p style="text-align:center;padding:40px;color:#888;">Loading posts...</p>
+        </div>
+    </div>
+
+    <script src="../public/js/dark-mode.js"></script>
+    <script src="../public/js/search.js"></script>
+    <script src="../public/js/scroll.js"></script>
+    <script src="../public/js/menu.js"></script>
+    <script type="module" src="../public/js/firebase.js"></script>
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script type="module" src="../public/js/user-profile.js"></script>
+    <script src="../public/js/language.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>

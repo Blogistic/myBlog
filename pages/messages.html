@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>Mesajlar - BIBlog</title>
+    <style>
+        .messages-page { display:flex; height:calc(100vh - 50px); max-width:1100px; margin:0 auto; border:1px solid #eee; border-top:none; }
+
+        /* Sol panel — konuşma listesi */
+        .conv-panel { width:300px; flex-shrink:0; border-right:1px solid #eee; display:flex; flex-direction:column; background:#fff; }
+        .conv-panel-header { padding:16px 20px; font-family:'Josefin Sans',sans-serif; font-size:1rem; font-weight:700; border-bottom:1px solid #eee; display:flex; align-items:center; gap:8px; }
+        #convList { flex:1; overflow-y:auto; }
+        .conv-item { display:flex; align-items:center; gap:12px; padding:14px 18px; cursor:pointer; border-bottom:1px solid #f5f5f5; transition:background 0.15s; }
+        .conv-item:hover { background:#f9f9f9; }
+        .conv-item.active { background:#f0f0ff; }
+        .conv-item img { width:44px; height:44px; border-radius:50%; object-fit:cover; flex-shrink:0; position:relative; }
+        .conv-avatar { position:relative; }
+        .online-dot { position:absolute; bottom:2px; right:2px; width:10px; height:10px; background:#2ecc71; border-radius:50%; border:2px solid #fff; display:none; }
+        .online-dot.active { display:block; }
+        .conv-info { overflow:hidden; flex:1; }
+        .conv-info strong { display:block; font-family:'Josefin Sans',sans-serif; font-size:0.9rem; }
+        .conv-info span { font-size:0.78rem; color:#888; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block; }
+        .conv-time { font-size:0.7rem; color:#aaa; margin-left:auto; }
+        .conv-unread { background:#4f46e5; color:#fff; border-radius:10px; padding:2px 8px; font-size:0.7rem; margin-left:auto; }
+
+        /* Sağ panel — chat */
+        .chat-panel { flex:1; display:flex; flex-direction:column; background:#f8f9fa; }
+        #chatHeader { display:flex; align-items:center; gap:12px; padding:14px 20px; border-bottom:1px solid #eee; min-height:60px; font-family:'Josefin Sans',sans-serif; background:#fff; }
+        #chatUserName { flex:1; }
+        .user-status { font-size:0.75rem; color:#888; }
+        .user-status.online { color:#2ecc71; }
+        #msgBox { flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:8px; }
+        #msgInputArea { display:none; padding:12px 16px; border-top:1px solid #eee; gap:10px; align-items:center; background:#fff; position:relative; }
+        .msg-input-wrapper { flex:1; display:flex; align-items:center; gap:8px; background:#f5f5f5; border-radius:25px; padding:4px 12px; }
+        #msgInput { flex:1; border:none; background:transparent; outline:none; font-family:'Josefin Sans',sans-serif; font-size:0.9rem; padding:8px 0; }
+        .emoji-btn { background:none; border:none; cursor:pointer; font-size:1.2rem; padding:4px; }
+        .emoji-picker { position:absolute; bottom:70px; left:12px; background:#fff; border:1px solid #eee; border-radius:12px; padding:10px; box-shadow:0 4px 20px rgba(0,0,0,0.15); display:none; flex-wrap:wrap; gap:4px; max-width:280px; z-index:100; }
+        .emoji-picker.open { display:flex; }
+        .emoji-picker span { cursor:pointer; font-size:1.3rem; padding:4px; border-radius:4px; }
+        .emoji-picker span:hover { background:#f0f0f0; }
+        #sendBtn { width:40px; height:40px; border-radius:50%; background:#4f46e5; color:#fff; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+        #sendBtn:hover { background:#4338ca; }
+
+        .msg-bubble { max-width:70%; display:flex; flex-direction:column; gap:2px; position:relative; padding:4px; margin:2px 0; }
+        .msg-bubble.mine { align-self:flex-end; align-items:flex-end; }
+        .msg-bubble.theirs { align-self:flex-start; align-items:flex-start; }
+        .msg-content { position:relative; }
+        .msg-bubble p { margin:0; padding:10px 14px; border-radius:18px; font-family:'Josefin Sans',sans-serif; font-size:0.9rem; line-height:1.5; word-break:break-word; }
+        .msg-bubble.mine p { background:#4f46e5; color:#fff; border-bottom-right-radius:4px; }
+        .msg-bubble.theirs p { background:#fff; color:#222; border:1px solid #e0e0e0; border-bottom-left-radius:4px; }
+        .msg-meta { display:flex; align-items:center; gap:6px; padding:0 4px; font-size:0.68rem; color:#aaa; }
+        .msg-bubble.mine .msg-meta { justify-content:flex-end; }
+        .seen-indicator { color:#4f46e5; font-size:0.85rem; margin-left:2px; }
+        .seen-indicator::before { content:'✓'; }
+        .msg-meta .seen-text { font-size:0.65rem; color:#4f46e5; }
+
+        .msg-more-btn { position:absolute; top:-10px; right:-4px; background:#f0f0f0; border:none; border-radius:50%; width:24px; height:24px; cursor:pointer; display:none; align-items:center; justify-content:center; transition:all 0.2s; box-shadow:0 2px 6px rgba(0,0,0,0.12); }
+        .msg-bubble.mine:hover .msg-more-btn { display:flex; }
+        .msg-more-btn:hover { background:#4f46e5; transform:scale(1.15); }
+        .msg-more-btn:hover span { background:#fff; }
+        .msg-more-btn span { display:block; width:4px; height:4px; background:#666; border-radius:50%; margin:1px; transition:background 0.2s; }
+
+        .msg-dropdown { position:absolute; top:22px; right:-4px; background:#fff; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.18); padding:6px; z-index:1000; min-width:120px; animation:dropIn 0.15s ease; }
+        @keyframes dropIn { from { opacity:0; transform:translateY(-8px) scale(0.95); } to { opacity:1; transform:translateY(0) scale(1); } }
+        .msg-dropdown button { width:100%; display:flex; align-items:center; gap:10px; padding:10px 12px; border:none; background:transparent; border-radius:8px; cursor:pointer; font-family:'Josefin Sans',sans-serif; font-size:0.85rem; color:#444; transition:all 0.15s; }
+        .msg-dropdown button:hover { background:#f5f5f5; }
+        .msg-dropdown button.delete:hover { background:#fff0f0; color:#e53935; }
+        .msg-dropdown button svg { flex-shrink:0; }
+
+        .edit-input { width:100%; padding:8px 12px; border:1px solid #4f46e5; border-radius:12px; font-family:'Josefin Sans',sans-serif; font-size:0.9rem; outline:none; background:inherit; color:inherit; }
+
+        /* Emoji button styling */
+        .emoji-btn { background:none; border:none; cursor:pointer; font-size:1.3rem; padding:6px; border-radius:50%; transition:all 0.2s; color:#888; }
+        .emoji-btn:hover { background:#f0f0f0; color:#4f46e5; transform:scale(1.15); }
+        .emoji-btn.active { background:#4f46e5; color:#fff; }
+
+        .chat-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#bbb; gap:12px; text-align:center; padding:20px; }
+        .chat-empty i { font-size:3rem; }
+
+        /* Dark mode */
+        body.dark-mode .messages-page { border-color:#2a2a4a; background:#1a1a2e; }
+        body.dark-mode .conv-panel { border-color:#2a2a4a; background:#1a1a2e; }
+        body.dark-mode .conv-panel-header { border-color:#2a2a4a; color:#e0e0e0; background:#16213e; }
+        body.dark-mode .conv-item { border-color:#2a2a4a; }
+        body.dark-mode .conv-item:hover { background:#0f3460; }
+        body.dark-mode .conv-item.active { background:#0f3460; }
+        body.dark-mode .conv-info strong { color:#e0e0e0; }
+        body.dark-mode .conv-info span { color:#aaa; }
+        body.dark-mode #chatHeader { border-color:#2a2a4a; color:#e0e0e0; background:#16213e; }
+        body.dark-mode #msgBox { background:#1a1a2e; }
+        body.dark-mode #msgInputArea { border-color:#2a2a4a; background:#16213e; }
+        body.dark-mode .msg-input-wrapper { background:#2a2a4a; }
+        body.dark-mode #msgInput { color:#e0e0e0; }
+        body.dark-mode .msg-bubble.theirs p { background:#2a2a4a; color:#e0e0e0; border-color:#3a3a5a; }
+        body.dark-mode .msg-action-btn { background:#2a2a4a; border-color:#3a3a5a; color:#aaa; }
+        body.dark-mode .msg-action-btn:hover { background:#3a3a5a; color:#fff; }
+        body.dark-mode .emoji-picker { background:#1a1a2e; border-color:#2a2a4a; }
+        body.dark-mode .emoji-btn:hover { background:#2a2a4a; }
+        body.dark-mode .msg-more-btn { background:#2a2a4a; }
+        body.dark-mode .msg-more-btn span { background:#aaa; }
+        body.dark-mode .msg-more-btn:hover { background:#4f46e5; }
+        body.dark-mode .msg-more-btn:hover span { background:#fff; }
+        body.dark-mode .msg-dropdown { background:#1a1a2e; border:1px solid #2a2a4a; }
+        body.dark-mode .msg-dropdown button { color:#e0e0e0; }
+        body.dark-mode .msg-dropdown button:hover { background:#2a2a4a; }
+        body.dark-mode .msg-dropdown button.delete:hover { background:#3a1a1a; color:#ff6b6b; }
+
+        @media (max-width: 600px) {
+            .conv-panel { width:80px; }
+            .conv-info { display:none; }
+            .conv-panel-header { font-size:0; padding:16px 10px; }
+            .conv-panel-header::after { content:"💬"; font-size:1.2rem; }
+            .msg-bubble { max-width:85%; }
+            .msg-actions { display:none !important; }
+        }
+    </style>
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+</head>
+<body>
+    <div class="topbar">
+        <div class="wrapper target">
+            <div class="left">
+                <button class="hamburger-btn" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+            </div>
+            <div class="center"><a href="../index.html">BIBlog</a></div>
+            <div class="right">
+                <button class="dark-mode-btn" id="darkModeBtn" title="Dark Mode"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <img id="menuProfileImg" src="../public/img/user/user-1.jpg" alt="profil">
+            <div>
+                <p id="menuUserName">Guest</p>
+                <span id="menuUserEmail"></span>
+            </div>
+        </div>
+        <nav>
+            <a href="../index.html"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="profile.html" id="menuProfileLink" style="display:none;"><i class="fa-solid fa-user"></i> My Profile</a>
+            <a href="explore.html"><i class="fa-solid fa-compass"></i> Explore</a>
+            <a href="messages.html" style="color:#4f46e5;"><i class="fa-solid fa-comments"></i> Messages</a>
+            <a href="public.html"><i class="fa-solid fa-globe"></i> Public Blogs</a>
+            <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+            <a href="settings.html"><i class="fa-solid fa-gear"></i> Settings</a>
+            <a href="#" id="menuLogoutBtn" onclick="logout()" style="display:none; color:#ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+        </nav>
+        <div class="side-menu-footer"><small>BIBlog © 2025</small></div>
+    </div>
+    <div class="side-overlay" id="sideOverlay"></div>
+
+    <div class="messages-page">
+        <div class="conv-panel">
+            <div class="conv-panel-header"><i class="fa-solid fa-comments"></i> Messages</div>
+            <div id="convList"></div>
+        </div>
+
+        <div class="chat-panel">
+            <div id="chatHeader">
+                <div class="chat-empty" style="width:100%;">
+                    <i class="fa-regular fa-comments"></i>
+                    <span style="font-family:'Josefin Sans',sans-serif;font-size:0.9rem;">Bir konuşma seç</span>
+                </div>
+            </div>
+            <div id="msgBox">
+                <div class="chat-empty">
+                    <i class="fa-regular fa-paper-plane"></i>
+                    <span style="font-family:'Josefin Sans',sans-serif;font-size:0.9rem;">Mesajlaşmak için sol panelden bir kişi seç veya bir profil sayfasından "Message" butonuna bas.</span>
+                    <div style="margin-top:20px; padding:16px; background:#f8f8ff; border-radius:12px; max-width:300px; text-align:left;">
+                        <p style="margin:0 0 10px 0; font-family:'Josefin Sans',sans-serif; font-size:0.85rem; color:#666;"><strong>Nasıl kullanılır?</strong></p>
+                        <p style="margin:0 0 6px 0; font-size:0.8rem; color:#888;"><span style="color:#4f46e5;">😃</span> Emoji eklemek için 😃 butonuna tıkla</p>
+                        <p style="margin:0 0 6px 0; font-size:0.8rem; color:#888;"><span style="color:#4f46e5;">⋮</span> Mesajın sağındaki 3 noktaya tıkla</p>
+                        <p style="margin:0; font-size:0.8rem; color:#888;"><span style="color:#4f46e5;">✓✓</span> Mesaj görüldüğünde çift tik görünür</p>
+                    </div>
+                </div>
+            </div>
+            <div id="msgInputArea" style="position:relative;">
+                <div class="emoji-picker" id="emojiPicker">
+                    <span onclick="insertEmoji('😀')">😀</span>
+                    <span onclick="insertEmoji('😂')">😂</span>
+                    <span onclick="insertEmoji('😍')">😍</span>
+                    <span onclick="insertEmoji('🥰')">🥰</span>
+                    <span onclick="insertEmoji('😊')">😊</span>
+                    <span onclick="insertEmoji('😎')">😎</span>
+                    <span onclick="insertEmoji('🤔')">🤔</span>
+                    <span onclick="insertEmoji('😢')">😢</span>
+                    <span onclick="insertEmoji('😮')">😮</span>
+                    <span onclick="insertEmoji('😡')">😡</span>
+                    <span onclick="insertEmoji('👍')">👍</span>
+                    <span onclick="insertEmoji('👎')">👎</span>
+                    <span onclick="insertEmoji('👏')">👏</span>
+                    <span onclick="insertEmoji('❤️')">❤️</span>
+                    <span onclick="insertEmoji('💔')">💔</span>
+                    <span onclick="insertEmoji('🎉')">🎉</span>
+                    <span onclick="insertEmoji('🔥')">🔥</span>
+                    <span onclick="insertEmoji('✨')">✨</span>
+                    <span onclick="insertEmoji('💯')">💯</span>
+                    <span onclick="insertEmoji('✅')">✅</span>
+                </div>
+                <div class="msg-input-wrapper">
+                    <button class="emoji-btn" id="emojiBtn" title="Emoji ekle"><i class="fa-regular fa-face-smile"></i></button>
+                    <input type="text" id="msgInput" placeholder="Mesaj yaz... (emoji için 😃 butonuna tıkla)">
+                    <button id="sendBtn" onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../public/js/dark-mode.js"></script>
+    <script src="../public/js/menu.js"></script>
+    <script src="../public/js/scroll.js"></script>
+    <script type="module" src="../public/js/firebase.js"></script>
+    <script type="module" src="../public/js/auth-kontrol.js"></script>
+    <script type="module" src="../public/js/messages.js"></script>
+    <script src="../public/js/cookie-consent.js"></script>
+    <script src="../public/js/terms-consent.js"></script>
+</body>
+</html>
